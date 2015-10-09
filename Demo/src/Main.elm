@@ -18,8 +18,8 @@ main =
 app : StartApp.App DeckState
 app =
   StartApp.start
-    { init = init staticSteps hashFromAddressBar
-    , update = update staticSteps
+    { init = init pathName hashFromAddressBar staticSteps
+    , update = update pathName staticSteps
     , view = view context
     , inputs = signals
     }
@@ -44,6 +44,8 @@ context =
 port impressSupported : Bool
 
 port hashFromAddressBar : String
+
+port pathName : String
 
 port tasks : Signal (Task Never ())
 port tasks =

@@ -7,8 +7,7 @@ import StartApp
 import Impress exposing (init, update, view, signals, asStatic)
 import Impress.Config exposing (DeckState, Step, Context)
 
---import {-- your module with the deck steps goes here --} as Deck exposing (steps, fallback, htmlBefore, htmlAfter)
-import ImpressDemo as Deck exposing (steps, fallback, htmlBefore, htmlAfter)
+import {-- your module with the deck steps goes here --} as Deck exposing (steps, fallback, htmlBefore, htmlAfter)
 
 
 main : Signal Html
