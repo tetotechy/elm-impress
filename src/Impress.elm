@@ -16,8 +16,6 @@ import String
 import StartApp
 import Impress.Config exposing (..)
 
-import Debug exposing (log)
-
 
 update : String -> List Step -> Action -> DeckState -> (DeckState, Effects Action)
 update pathName staticSteps action deck =
@@ -116,7 +114,7 @@ update pathName staticSteps action deck =
         if ix /= currentIx then setMove Click ix else noop
 
       GoToId hash ->
-        case getFromId (String.dropLeft 2 (log "hash" hash)) staticSteps of
+        case getFromId (String.dropLeft 2 hash) staticSteps of
           Just step ->
             if step.ix /= currentIx
               then setMove Hash step.ix
@@ -171,7 +169,7 @@ init pathName hashFromAddressBar staticSteps =
       , transitioning = False
       }
     , Effects.task
-        (replacePath ((log "initial pathname" pathName) ++ "#/" ++ initialStep.id)
+        (replacePath (pathName ++ "#/" ++ initialStep.id)
           `andThen` always (succeed NoOp))
     )
 
