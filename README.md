@@ -9,6 +9,8 @@ and ends up being turned into an [`Html`](https://github.com/evancz/elm-html) ty
 
 See the `Demo` folder for an example, taken from [the official impress.js demo](http://impress.github.io/impress.js).
 
+To compare, try the [elm-impress demo](http://tetotechy.github.io/elm-impress).
+
 ## ToDo
 - [ ] Provide more details on usage
 - [ ] Describe differences vs. the original JavaScript version (very few indeed, and minor too)
