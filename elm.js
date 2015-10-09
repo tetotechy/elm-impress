@@ -4304,7 +4304,7 @@ Elm.Impress.make = function (_elm) {
                        $History.setPath(A2($Basics._op["++"],
                        pathName,
                        A2($Basics._op["++"],
-                       "/#/",
+                       "#/",
                        actualDeck.currentStep.id))),
                        $Basics.always($Task.succeed($Impress$Config.NoOp))));
                     }();
