@@ -1,0 +1,63 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>impress.js | presentation tool based on the power of CSS3 transforms and transitions in modern browsers | by Bartek Szopka @bartaz</title>
+
+    <meta name="description" content="impress.js is a presentation tool based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com." />
+    <meta name="author" content="Bartek Szopka" />
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+
+    <link href="css/impress-demo.css" rel="stylesheet" />
+
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+    <script type="text/javascript" src="elm.js"></script>
+</head>
+
+<body>
+</body>
+
+<script>
+  var ua = navigator.userAgent.toLowerCase(),
+      body = document.body;
+
+  var supported = document.createElement("dummy").style.perspective !== null &&
+                  body.classList &&
+                  body.dataset &&
+                  ua.search(/(iphone)|(ipod)|(android)/) === -1;
+
+  // supported = !supported
+
+  if (supported) {
+    var meta =  document.querySelector("meta[name='viewport']") ||
+                document.createElement("meta");
+    meta.content = "width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no";
+
+    if (meta.parentNode !== document.head) {
+      meta.name = 'viewport';
+      document.head.appendChild(meta);
+    }
+
+    document.documentElement.style.height = "100%";
+    body.style.heigth = "100%";
+    body.style.overflow = "hidden";
+
+  }
+
+  document.addEventListener("keydown", function ( event ) {
+      if (event.keyCode === 9) event.preventDefault();
+  }, false);
+
+  var elmImpress = Elm.fullscreen(Elm.Main, {
+    impressSupported : supported,
+    hashFromAddressBar : window.location.hash
+  });
+</script>
+
+</html>
