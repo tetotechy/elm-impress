@@ -107,7 +107,7 @@ update pathName staticSteps action deck =
 
               _ -> -- Kb or Click
                 Effects.task
-                  (setPath (pathName ++ "/#/" ++ actualDeck.currentStep.id)
+                  (setPath (pathName ++ "#/" ++ actualDeck.currentStep.id)
                     `andThen` always (succeed NoOp))
         in
           (actualDeck, effects)
