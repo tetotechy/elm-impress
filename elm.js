@@ -4114,7 +4114,7 @@ Elm.Impress.make = function (_elm) {
                 "initial pathname",
                 pathName),
                 A2($Basics._op["++"],
-                "/#/",
+                "#/",
                 initialStep.id))),
                 $Basics.always($Task.succeed($Impress$Config.NoOp))))};
       }();
