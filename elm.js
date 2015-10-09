@@ -3832,7 +3832,6 @@ Elm.Impress.make = function (_elm) {
    _L = _N.List.make(_elm),
    $moduleName = "Impress",
    $Basics = Elm.Basics.make(_elm),
-   $Debug = Elm.Debug.make(_elm),
    $Effects = Elm.Effects.make(_elm),
    $History = Elm.History.make(_elm),
    $Html = Elm.Html.make(_elm),
@@ -3876,7 +3875,7 @@ Elm.Impress.make = function (_elm) {
                  wScale));
               }();}
          _U.badCase($moduleName,
-         "between lines 378 and 385");
+         "between lines 376 and 383");
       }();
    };
    var rotate = F2(function (vector,
@@ -4033,7 +4032,7 @@ Elm.Impress.make = function (_elm) {
          ix - 1,
          staticSteps)),
          $ = _raw.ctor === "Just" ? _raw : _U.badCase($moduleName,
-         "on line 219, column 7 to 50"),
+         "on line 217, column 7 to 50"),
          step = $._0;
          return step;
       }();
@@ -4077,7 +4076,7 @@ Elm.Impress.make = function (_elm) {
             case "[]":
             return $Maybe.Nothing;}
          _U.badCase($moduleName,
-         "between lines 181 and 188");
+         "between lines 179 and 186");
       }();
    });
    var init = F3(function (pathName,
@@ -4098,7 +4097,7 @@ Elm.Impress.make = function (_elm) {
                case "Nothing":
                return firstStep;}
             _U.badCase($moduleName,
-            "between lines 159 and 165");
+            "between lines 157 and 163");
          }();
          return {ctor: "_Tuple2"
                 ,_0: {_: {}
@@ -4110,9 +4109,7 @@ Elm.Impress.make = function (_elm) {
                      ,visitedIxs: $Set.empty}
                 ,_1: $Effects.task(A2($Task.andThen,
                 $History.replacePath(A2($Basics._op["++"],
-                A2($Debug.log,
-                "initial pathname",
-                pathName),
+                pathName,
                 A2($Basics._op["++"],
                 "#/",
                 initialStep.id))),
@@ -4322,9 +4319,7 @@ Elm.Impress.make = function (_elm) {
                     var _v26 = A2(getFromId,
                     A2($String.dropLeft,
                     2,
-                    A2($Debug.log,
-                    "hash",
-                    action._0)),
+                    action._0),
                     staticSteps);
                     switch (_v26.ctor)
                     {case "Just":
@@ -4334,7 +4329,7 @@ Elm.Impress.make = function (_elm) {
                          _v26._0.ix) : noop;
                        case "Nothing": return noop;}
                     _U.badCase($moduleName,
-                    "between lines 119 and 128");
+                    "between lines 117 and 126");
                  }();
                case "KeyDown":
                return function () {
@@ -4368,7 +4363,7 @@ Elm.Impress.make = function (_elm) {
                       ,_1: $Effects.none};
                case "NoOp": return noop;}
             _U.badCase($moduleName,
-            "between lines 68 and 129");
+            "between lines 66 and 127");
          }();
       }();
    });
