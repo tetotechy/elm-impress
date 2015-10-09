@@ -171,7 +171,7 @@ init pathName hashFromAddressBar staticSteps =
       , transitioning = False
       }
     , Effects.task
-        (replacePath ((log "initial pathname" pathName) ++ "/#/" ++ initialStep.id)
+        (replacePath ((log "initial pathname" pathName) ++ "#/" ++ initialStep.id)
           `andThen` always (succeed NoOp))
     )
 
