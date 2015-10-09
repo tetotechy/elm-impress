@@ -16,9 +16,11 @@ import String
 import StartApp
 import Impress.Config exposing (..)
 
+import Debug exposing (log)
 
-update : List Step -> Action -> DeckState -> (DeckState, Effects Action)
-update staticSteps action deck =
+
+update : String -> List Step -> Action -> DeckState -> (DeckState, Effects Action)
+update pathName staticSteps action deck =
   let
     noop =
       (deck, Effects.none)
@@ -105,7 +107,7 @@ update staticSteps action deck =
 
               _ -> -- Kb or Click
                 Effects.task
-                  (setPath ("/#/" ++ actualDeck.currentStep.id)
+                  (setPath (pathName ++ "/#/" ++ actualDeck.currentStep.id)
                     `andThen` always (succeed NoOp))
         in
           (actualDeck, effects)
@@ -114,7 +116,7 @@ update staticSteps action deck =
         if ix /= currentIx then setMove Click ix else noop
 
       GoToId hash ->
-        case getFromId (String.dropLeft 2 hash) staticSteps of
+        case getFromId (String.dropLeft 2 (log "hash" hash)) staticSteps of
           Just step ->
             if step.ix /= currentIx
               then setMove Hash step.ix
@@ -147,8 +149,8 @@ computeDelay currentStep targetStep =
         else normalDelay
 
 
-init : List Step -> String -> (DeckState, Effects Action)
-init staticSteps hashFromAddressBar =
+init : String -> String -> List Step -> (DeckState, Effects Action)
+init pathName hashFromAddressBar staticSteps =
   let
     firstStep =
       getStep 1 staticSteps
@@ -169,7 +171,8 @@ init staticSteps hashFromAddressBar =
       , transitioning = False
       }
     , Effects.task
-        (replacePath ("/#/" ++ initialStep.id) `andThen` always (succeed NoOp))
+        (replacePath ((log "initial pathname" pathName) ++ "/#/" ++ initialStep.id)
+          `andThen` always (succeed NoOp))
     )
 
 

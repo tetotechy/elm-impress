@@ -5,9 +5,10 @@ import Task exposing (Task)
 import Effects exposing (Never)
 import StartApp
 import Impress exposing (init, update, view, signals, asStatic)
-import ImpressConfig exposing (DeckState, Step, Context)
+import Impress.Config exposing (DeckState, Step, Context)
 
-import {-- your module with the deck steps goes here --} as Deck exposing (steps, fallback, htmlBefore, htmlAfter)
+--import {-- your module with the deck steps goes here --} as Deck exposing (steps, fallback, htmlBefore, htmlAfter)
+import ImpressDemo as Deck exposing (steps, fallback, htmlBefore, htmlAfter)
 
 
 main : Signal Html
@@ -18,8 +19,8 @@ main =
 app : StartApp.App DeckState
 app =
   StartApp.start
-    { init = init staticSteps hashFromAddressBar
-    , update = update staticSteps
+    { init = init pathName hashFromAddressBar staticSteps
+    , update = update pathName staticSteps
     , view = view context
     , inputs = signals
     }
@@ -44,6 +45,8 @@ context =
 port impressSupported : Bool
 
 port hashFromAddressBar : String
+
+port pathName : String
 
 port tasks : Signal (Task Never ())
 port tasks =
