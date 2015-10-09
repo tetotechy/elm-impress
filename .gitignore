@@ -1,5 +1,5 @@
 elm-stuff/
-
-*.js
+Demo/src/
 
 elm-package.json
+src/
